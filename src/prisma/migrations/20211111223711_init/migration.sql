@@ -4,6 +4,7 @@ CREATE TABLE `character` (
     `name` VARCHAR(191) NOT NULL,
     `age` INTEGER NULL,
     `gender` VARCHAR(191) NULL,
+    `ocupation` VARCHAR(191) NULL,
     `player_name` VARCHAR(191) NULL,
     `current_hit_points` INTEGER NOT NULL DEFAULT 0,
     `max_hit_points` INTEGER NOT NULL DEFAULT 0,
