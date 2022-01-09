@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `character` (
+CREATE TABLE IF NOT EXISTS `character` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `age` INTEGER NULL,
