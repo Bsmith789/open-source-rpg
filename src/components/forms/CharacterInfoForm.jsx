@@ -14,7 +14,8 @@ const CharacterInfoForm = ({
             name: initialValues.name,
             player_name: initialValues.player_name,
             age: initialValues.age,
-            gender: initialValues.gender
+            gender: initialValues.gender,
+            ocupation: initialValues.ocupation
         }}
         onSubmit={(values, { setSubmitting }) => {
             onSubmit(values).then(() => setSubmitting(false));
@@ -73,6 +74,17 @@ const CharacterInfoForm = ({
                         fullWidth
                         onChange={handleChange}
                         error={errors.gender}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        variant="outlined"
+                        label="Ocupação"
+                        name="ocupation"
+                        value={values.ocupation}
+                        fullWidth
+                        onChange={handleChange}
+                        error={errors.ocupation}
                     />
                 </Grid>
                 <Grid item xs={12}>
