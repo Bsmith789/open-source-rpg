@@ -11,9 +11,9 @@ import { api } from '../../utils';
 import socket from '../../utils/socket';
 
 import {
-  Header, Section, StatusBar, SheetEditableRow, 
+  Header, Section, StatusBar, SanityBar , EnergyBar, SheetEditableRow, 
 
-  DiceRollModal, StatusBarModal, ChangePictureModal
+  DiceRollModal, StatusBarModal, SanityBarModal, EnergyBarModal, ChangePictureModal
 } from '../../components';
 
 import {
@@ -118,6 +118,54 @@ function Sheet({
     });
   }
 
+  const onSanityModalSubmit = async newData => {
+    return new Promise((resolve, reject) => {
+      const data = {
+        current_sanity_points: Number(newData.current),
+        max_sanity_points: Number(newData.max)
+      }
+
+      api
+        .put(`/character/${character.id}`, data)
+        .then(() => {
+          updateCharacterState(data);
+
+          resolve();
+
+          socket.emit('update_sanity_points', { character_id: character.id, current: data.current_sanity_points, max: data.max_sanity_points });
+        })
+        .catch(err => {
+          alert(`Erro ao atualizar a sanidade!`, err);
+
+          reject();
+        });
+    });
+  }
+
+  const onEnergyModalSubmit = async newData => {
+    return new Promise((resolve, reject) => {
+      const data = {
+        current_energy_points: Number(newData.current),
+        max_energy_points: Number(newData.max)
+      }
+
+      api
+        .put(`/character/${character.id}`, data)
+        .then(() => {
+          updateCharacterState(data);
+
+          resolve();
+
+          socket.emit('update_energy_points', { character_id: character.id, current: data.current_energy_points, max: data.max_energy_points });
+        })
+        .catch(err => {
+          alert(`Erro ao atualizar a energia!`, err);
+
+          reject();
+        });
+    });
+  }
+
   useEffect(() => {
     setCharacter(rawCharacter);
   }, [rawCharacter]);
@@ -139,6 +187,34 @@ function Sheet({
       data={{
         current: character.current_hit_points,
         max: character.max_hit_points
+      }}
+    />
+  ));
+
+  const SanityModal = useModal(({ close }) => (
+    <SanityBarModal
+      type="hp"
+      onSubmit={async newData => {
+        onSanityModalSubmit(newData).then(() => close());
+      }}
+      handleClose={close}
+      data={{
+        current: character.current_sanity_points,
+        max: character.max_sanity_points
+      }}
+    />
+  ));
+
+  const EnergyModal = useModal(({ close }) => (
+    <EnergyBarModal
+      type="hp"
+      onSubmit={async newData => {
+        onEnergyModalSubmit(newData).then(() => close());
+      }}
+      handleClose={close}
+      data={{
+        current: character.current_energy_points,
+        max: character.max_energy_points
       }}
     />
   ));
@@ -279,10 +355,48 @@ function Sheet({
                           current={character.current_hit_points}
                           max={character.max_hit_points}
                           label={`${character.current_hit_points}/${character.max_hit_points}`}
-                          primaryColor="#E80A67"
-                          secondaryColor="#4d0321"
+                          lifeColor="#0ae85b"
+                          lifeSecondaryColor="#064d20"
                           onClick={() => {
                             hitPointsModal.appear();
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} className={classes.alignCenter}>
+                    <Grid container item xs={12} className={classes.bar}>
+                      <Grid item xs={12} className={classes.barTitle}>
+                        <span>Sanidade</span>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <SanityBar
+                          current={character.current_sanity_points}
+                          max={character.max_sanity_points}
+                          label={`${character.current_sanity_points}/${character.max_sanity_points}`}
+                          sanityColor="#0a88e8"
+                          sanitySecondaryColor="#062e4d"
+                          onClick={() => {
+                            SanityModal.appear();
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} className={classes.alignCenter}>
+                    <Grid container item xs={12} className={classes.bar}>
+                      <Grid item xs={12} className={classes.barTitle}>
+                        <span>Energia</span>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <EnergyBar
+                          current={character.current_energy_points}
+                          max={character.max_energy_points}
+                          label={`${character.current_energy_points}/${character.max_energy_points}`}
+                          energyColor="#E80A67"
+                          energySecondaryColor="#4d0321"
+                          onClick={() => {
+                            EnergyModal.appear();
                           }}
                         />
                       </Grid>

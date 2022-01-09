@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE IF NOT EXISTS `character` (
+CREATE TABLE `character` IF EXISTS `character` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `age` INTEGER NULL,
@@ -8,6 +8,10 @@ CREATE TABLE IF NOT EXISTS `character` (
     `player_name` VARCHAR(191) NULL,
     `current_hit_points` INTEGER NOT NULL DEFAULT 0,
     `max_hit_points` INTEGER NOT NULL DEFAULT 0,
+    `current_sanity_points` INTEGER NOT NULL DEFAULT 0,
+    `max_sanity_points` INTEGER NOT NULL DEFAULT 0,
+    `current_energy_points` INTEGER NOT NULL DEFAULT 0,
+    `max_energy_points` INTEGER NOT NULL DEFAULT 0,
     `current_picture` INTEGER NOT NULL DEFAULT 1,
     `is_dead` BOOLEAN NOT NULL DEFAULT false,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

@@ -1,13 +1,13 @@
 import { LinearProgress, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-function LifeLinearProgressWithLabel(props) {
+function EnergyLinearProgressWithLabel(props) {
     const useStyles = makeStyles({
-        lifeColor: {
-            backgroundColor: props.lifeColor
+        energyColor: {
+            backgroundColor: props.energyColor
         },
-        lifeSecondaryColor: {
-            backgroundColor: props.lifeSecondaryColor
+        energySecondaryColor: {
+            backgroundColor: props.energySecondaryColor
         }
     });
 
@@ -21,8 +21,8 @@ function LifeLinearProgressWithLabel(props) {
                     variant="determinate"
                     value={props.value}
                     classes={{
-                        root: classes.lifeSecondaryColor,
-                        bar: classes.lifeColor
+                        root: classes.energySecondaryColor,
+                        bar: classes.energyColor
                     }}
                     onClick={props.onClick}
                 />
@@ -36,27 +36,27 @@ function LifeLinearProgressWithLabel(props) {
     )
 }
 
-const StatusBar = ({
+const EnergyBar = ({
     label,
     max,
     current,
-    lifeColor,
-    lifeSecondaryColor,
+    energyColor,
+    energySecondaryColor,
     onClick
 }) => {
     const normalise = (current, max) => ((current - 0) * 100) / (max - 0);
 
     return (
         <Box sx={{ width: '100%' }}>
-            <LifeLinearProgressWithLabel
+            <EnergyLinearProgressWithLabel
                 value={normalise(current, max)}
                 label={label}
-                lifeColor={lifeColor}
-                lifeSecondaryColor={lifeSecondaryColor}
+                energyColor={energyColor}
+                energySecondaryColor={energySecondaryColor}
                 onClick={onClick}
             />
         </Box>
     )
 }
 
-export default StatusBar;
+export default EnergyBar;

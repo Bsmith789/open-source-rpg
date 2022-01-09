@@ -1,13 +1,13 @@
 import { LinearProgress, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-function LifeLinearProgressWithLabel(props) {
+function SanityLinearProgressWithLabel(props) {
     const useStyles = makeStyles({
-        lifeColor: {
-            backgroundColor: props.lifeColor
+        sanityColor: {
+            backgroundColor: props.sanityColor
         },
-        lifeSecondaryColor: {
-            backgroundColor: props.lifeSecondaryColor
+        sanitySecondaryColor: {
+            backgroundColor: props.sanitySecondaryColor
         }
     });
 
@@ -21,8 +21,8 @@ function LifeLinearProgressWithLabel(props) {
                     variant="determinate"
                     value={props.value}
                     classes={{
-                        root: classes.lifeSecondaryColor,
-                        bar: classes.lifeColor
+                        root: classes.sanitySecondaryColor,
+                        bar: classes.sanityColor
                     }}
                     onClick={props.onClick}
                 />
@@ -36,27 +36,27 @@ function LifeLinearProgressWithLabel(props) {
     )
 }
 
-const StatusBar = ({
+const SanityBar = ({
     label,
     max,
     current,
-    lifeColor,
-    lifeSecondaryColor,
+    sanityColor,
+    sanitySecondaryColor,
     onClick
 }) => {
     const normalise = (current, max) => ((current - 0) * 100) / (max - 0);
 
     return (
         <Box sx={{ width: '100%' }}>
-            <LifeLinearProgressWithLabel
+            <SanityLinearProgressWithLabel
                 value={normalise(current, max)}
                 label={label}
-                lifeColor={lifeColor}
-                lifeSecondaryColor={lifeSecondaryColor}
+                sanityColor={sanityColor}
+                sanitySecondaryColor={sanitySecondaryColor}
                 onClick={onClick}
             />
         </Box>
     )
 }
 
-export default StatusBar;
+export default SanityBar;
