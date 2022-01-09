@@ -1,6 +1,6 @@
 datasource db {
   provider = "mysql"
-  url      = env("DB_PROVIDER_URL")
+  url      = env("JAWSDB_URL")
 }
 
 generator client {
