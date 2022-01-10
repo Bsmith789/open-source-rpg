@@ -15,6 +15,9 @@ const CharacterInfoForm = ({
             player_name: initialValues.player_name,
             age: initialValues.age,
             gender: initialValues.gender,
+            movement: initialValues.movement,
+            armor: initialValues.armor,
+            exposition: initialValues.exposition,
             ocupation: initialValues.ocupation
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -85,6 +88,42 @@ const CharacterInfoForm = ({
                         fullWidth
                         onChange={handleChange}
                         error={errors.ocupation}
+                    />
+                </Grid>
+                <Grid item xs={4}>
+                    <TextField
+                        type="number"
+                        variant="outlined"
+                        label="Movimento"
+                        name="movement"
+                        value={values.movement}
+                        fullWidth
+                        onChange={handleChange}
+                        error={errors.movement}
+                    />
+                </Grid>
+                <Grid item xs={4}>
+                    <TextField
+                        type="number"
+                        variant="outlined"
+                        label="Corpo"
+                        name="armor"
+                        value={values.armor}
+                        fullWidth
+                        onChange={handleChange}
+                        error={errors.armor}
+                    />
+                </Grid>
+                <Grid item xs={4}>
+                    <TextField
+                        type="number"
+                        variant="outlined"
+                        label="Exposição"
+                        name="exposition"
+                        value={values.exposition + '%'}
+                        fullWidth
+                        onChange={handleChange}
+                        error={errors.exposition}
                     />
                 </Grid>
                 <Grid item xs={12}>

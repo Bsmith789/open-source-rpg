@@ -13,6 +13,9 @@ model Character {
   age Int?
   gender String?
   ocupation String?
+  movement String?
+  armor String?
+  exposition String?
   player_name String?
   current_hit_points Int @default(0)
   max_hit_points Int @default(0)

@@ -50,7 +50,7 @@ function SanityBarModal({
 
     const getTitle = () => {
         switch (type) {
-            case 'hp': return 'Alterar pontos de vida';
+            case 'hp': return 'Alterar pontos de sanidade';
             default: return 'Alterar pontos';
         }
     }

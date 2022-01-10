@@ -5,7 +5,10 @@ const schema = Yup.object().shape({
     player_name: Yup.string().nullable(),
     age: Yup.number().nullable(),
     gender: Yup.string().nullable(),
-    ocupation: Yup.string().nullable()
+    ocupation: Yup.string().nullable(),
+    movement: Yup.string().nullable(),
+    armor: Yup.string().nullable(),
+    exposition: Yup.string().nullable()
 });
 
 export default schema;

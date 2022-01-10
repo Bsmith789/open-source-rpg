@@ -17,8 +17,8 @@ const Header = ({
             style={{ textAlign: 'center', marginTop: 50 }}
         >
             <Image
-                src="/assets/logo.svg"
-                alt="Open Source RPG"
+                src="/assets/Neterise.svg"
+                alt="Destruição do Equilíbrio"
                 width="150"
                 height="55"
             />

@@ -50,7 +50,7 @@ function EnergyBarModal({
 
     const getTitle = () => {
         switch (type) {
-            case 'hp': return 'Alterar pontos de vida';
+            case 'hp': return 'Alterar pontos de energia';
             default: return 'Alterar pontos';
         }
     }
