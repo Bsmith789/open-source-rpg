@@ -120,7 +120,7 @@ const CharacterInfoForm = ({
                         variant="outlined"
                         label="Exposição"
                         name="exposition"
-                        value={values.exposition + '%'}
+                        value={values.exposition}
                         fullWidth
                         onChange={handleChange}
                         error={errors.exposition}
