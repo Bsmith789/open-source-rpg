@@ -19,8 +19,8 @@ const Header = ({
             <Image
                 src="/assets/logoEquilibrio.svg"
                 alt="Destruição do Equilíbrio"
-                width="150"
-                height="55"
+                width="200"
+                height="400"
             />
             <h1
                 className={classes.title}
